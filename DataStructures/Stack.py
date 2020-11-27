@@ -1,5 +1,4 @@
-from Node import Node
-
+from DataStructures.Node import Node
 class Stack:
 
     def __init__(self):
@@ -23,4 +22,9 @@ class Stack:
     def pop(self):
         if self.top is not None:
             value = self.top.getValue()
+            self.top = self.top.getNext()
+            self.size -= 1
             return value
+
+    def isEmpty(self):
+        return self.size == 0
