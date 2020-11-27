@@ -80,3 +80,30 @@ def evaluate(expression):
         numbers.push(output)
 
     return numbers.pop()
+
+def fixMissingOperation(expression,variable):
+    i = 0
+    newExpression = ""
+
+    while i < len(expression):
+        c = expression[i]
+
+        if i+1 < len(expression):
+            next = expression[i+1]
+
+            if next == variable and not isOperator(c):
+                newExpression += c + "*"
+            else:
+                newExpression += c
+        else:
+            newExpression += c
+
+        i += 1
+
+    return newExpression
+
+def evaluateAt(expression,variable,value):
+    expression = fixMissingOperation(expression,variable)
+    expression = str.replace(expression,variable,str(value))
+    return evaluate(expression)
+
