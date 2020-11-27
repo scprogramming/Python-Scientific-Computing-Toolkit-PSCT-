@@ -93,6 +93,8 @@ def fixMissingOperation(expression,variable):
 
             if next == variable and not isOperator(c):
                 newExpression += c + "*"
+            elif (not str.isdigit(next) and not isOperator(next) and next != "(" and next != ")") and not isOperator(c):
+                newExpression += c + '*'
             else:
                 newExpression += c
         else:
